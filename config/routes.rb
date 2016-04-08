@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
   resources :users
   resources :departments
   resources :branches
@@ -6,4 +11,5 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
+  root to: 'sessions#new'
 end

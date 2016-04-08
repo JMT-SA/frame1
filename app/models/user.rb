@@ -3,4 +3,7 @@ class User < Sequel::Model
   many_to_one :department
   many_to_one :branch
   
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
