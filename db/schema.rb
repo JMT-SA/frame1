@@ -2,14 +2,14 @@ Sequel.migration do
   change do
     create_table(:branches) do
       primary_key :id
-      column :branch_name, "text", :null=>false
+      column :branch_name, "character varying(255)", :null=>false
       column :created_at, "timestamp without time zone"
       column :updated_at, "timestamp without time zone"
     end
     
     create_table(:departments) do
       primary_key :id
-      column :department_name, "text", :null=>false
+      column :department_name, "character varying(255)", :null=>false
       column :created_at, "timestamp without time zone"
       column :updated_at, "timestamp without time zone"
     end
@@ -22,16 +22,16 @@ Sequel.migration do
     
     create_table(:users) do
       primary_key :id
-      column :user_name, "text", :null=>false
-      column :password_digest, "text"
+      column :user_name, "character varying(255)", :null=>false
+      column :password_digest, "character varying(255)"
       column :department_id, "integer", :null=>false
       column :branch_id, "integer"
-      column :created_by, "text"
-      column :updated_by, "text"
-      column :first_name, "text", :null=>false
-      column :last_name, "text"
+      column :created_by, "character varying(255)"
+      column :updated_by, "character varying(255)"
+      column :first_name, "character varying(255)", :null=>false
+      column :last_name, "character varying(255)"
       column :active, "boolean", :default=>true
-      column :email_address, "text"
+      column :email_address, "character varying(255)"
       column :created_at, "timestamp without time zone"
       column :updated_at, "timestamp without time zone"
     end

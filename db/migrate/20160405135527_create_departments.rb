@@ -3,7 +3,7 @@ Sequel.migration do
 
     create_table :departments do
       primary_key :id
-      String :department_name, null: false
+      String :department_name, size: 255, null: false
       DateTime :created_at
       DateTime :updated_at
     end
