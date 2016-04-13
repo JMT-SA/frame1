@@ -7,6 +7,24 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # GET /users/load_index.json
+  def load_index
+    # Make json that includes rows and columndefs and pass in one shot...
+    hs = { columnDefs: [
+    {headerName: "id", field: "id"},
+    {headerName: "Name", field: "user_name"},
+    {headerName: "Department", field: "department_name"},
+    {headerName: "Branch", field: "branch_name"},
+    {headerName: "First Name", field: "first_name"},
+    {headerName: "Last Name", field: "last_name"},
+    {headerName: "Active", field: "active"},
+    {headerName: "Email address", field: "email_address"},
+    {headerName: "Created", field: "created_at"},
+    {headerName: "Updated", field: "updated_at"},
+    ], rowDefs: User.association_join(:department).association_join(:branch).all}
+    render json: hs, status: :ok
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

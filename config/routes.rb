@@ -4,9 +4,23 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users
-  resources :departments
-  resources :branches
+  resources :users do
+    collection do
+      get 'load_index'
+    end
+  end
+
+  resources :departments do
+    collection do
+      get 'load_index'
+    end
+  end
+
+  resources :branches do
+    collection do
+      get 'load_index'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Catch-all route.

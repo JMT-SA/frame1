@@ -7,6 +7,19 @@ class BranchesController < ApplicationController
     @branches = Branch.all
   end
 
+  # GET /branches/load_index.json
+  def load_index
+    # Make json that includes rows and columndefs and pass in one shot...
+    hs = { columnDefs: [
+    {headerName: "id", field: "id"},
+    {headerName: "Name", field: "branch_name"},
+    {headerName: "Created", field: "created_at"},
+    {headerName: "Updated", field: "updated_at"},
+    ], rowDefs: Branch.all}
+    #render json: Branch.all, status: :ok
+    render json: hs, status: :ok
+  end
+
   # GET /branches/1
   # GET /branches/1.json
   def show
